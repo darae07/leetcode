@@ -1,1 +1,40 @@
 155. Min Stack
+
+조건: 
+- MinStack() initializes the stack object.
+- void push(val) pushes the element val onto the stack.
+- void pop() removes the element on the top of the stack.
+- int top() gets the top element of the stack.
+- int getMin() retrieves the minimum element in the stack.
+
+포인트:
+- 두개의 스택을 보관하여 하나는 원래의 형태를, 다른 하나는 최소값을 상단에 유지한 형태로 만든다.
+- push를 구현할때, stack에는 원래 값을, minstack에는 원래 값과 getMin의 반환값의 최솟값을 넣는다.
+- getMin은 minstack이 있으면 마지막 값을, 없으면 int 최대값을 반환한다.
+- pop은 동일하게 하나씩 없애고, top은 stack에서 마지막 값을 반환한다.
+
+        class MinStack:
+
+        def __init__(self):
+            """
+            initialize your data structure here.
+            """
+            self.stack = []
+            self.minstack = []
+
+        def push(self, val: int) -> None:
+            self.stack.append(val)
+            self.minstack.append(min(val, self.getMin()))
+
+        def pop(self) -> None:
+            self.stack.pop()
+            self.minstack.pop()
+
+
+        def top(self) -> int:
+            return self.stack[-1]
+
+        def getMin(self) -> int:
+            if self.minstack:
+                return self.minstack[-1]
+            return sys.maxsize
