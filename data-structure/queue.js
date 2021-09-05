@@ -13,7 +13,8 @@ class Queue{
   count = 0;
 
   put(value) {
-    // 자바스크립트의 객체는 메모리 주소를 변수명에 할당한다.
+    // 참조타입의 자료는 = 연산자로 할당하면 메모리 주소를 복사한다.(shallow capy)
+    // 변수가 선언된 stack에는 메모리 주소가, 실제 데이터는 heap 메모리에 저장된다.
     // 따라서 객체의 값이 변경되면 이를 참조하는 모든 변수는 같은 값을 공유한다.
     const node = new Node(value);
     if(!this.front) {
