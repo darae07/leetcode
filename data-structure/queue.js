@@ -13,14 +13,15 @@ class Queue{
   count = 0;
 
   put(value) {
+    // 자바스크립트의 객체는 메모리 주소를 변수명에 할당한다.
+    // 따라서 객체의 값이 변경되면 이를 참조하는 모든 변수는 같은 값을 공유한다.
     const node = new Node(value);
-    if(this.rear){
+    if(!this.front) {
+      this.front = node;
+    }else{
       this.rear.next = node;
     }
     this.rear = node;
-    if(this.count === 0){
-      this.front = this.rear
-    }
     this.count ++;
   };
 
