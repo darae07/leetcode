@@ -5,7 +5,7 @@
 // size, isEmpty, clear
 
 class LinkedList {
-  haed = null;
+  head = null;
   tail = null;
   size = 0;
 
@@ -13,7 +13,7 @@ class LinkedList {
     if (index < 0 || index >= this.size) {
       throw new Error("index out exception");
     }
-    let node = this.haed;
+    let node = this.head;
     for (let i = 0; i < this.size; i++) {
       if (i === index) {
         return node;
@@ -24,8 +24,8 @@ class LinkedList {
 
   addFirst(value) {
     const node = new Node(value);
-    node.next = this.haed;
-    this.haed = node;
+    node.next = this.head;
+    this.head = node;
     if (!this.tail) {
       this.tail = node;
     }
@@ -34,14 +34,14 @@ class LinkedList {
 
   addLast(value) {
     const node = new Node(value);
-    if (!this.haed) {
-      this.haed = node;
+    if (!this.head) {
+      this.head = node;
     } else {
       this.tail.next = node;
     }
     this.tail = node;
-    if (!this.haed.next) {
-      this.haed.next = node;
+    if (!this.head.next) {
+      this.head.next = node;
     }
     this.size++;
   }
@@ -54,7 +54,7 @@ class LinkedList {
     }
     let prev = null;
     if (index === 0) {
-      prev = this.haed;
+      prev = this.head;
     } else {
       prev = this.search(index - 1);
     }
@@ -70,8 +70,8 @@ class LinkedList {
     }
     this.size--;
     if (!index) {
-      const val = this.haed.value;
-      this.haed = this.haed.next;
+      const val = this.head.value;
+      this.head = this.head.next;
       return val;
     }
     const prev = this.search(index - 1);
@@ -84,12 +84,12 @@ class LinkedList {
   }
 
   removeVal(value) {
-    if (this.haed.value === value) {
-      this.haed = this.haed.next;
+    if (this.head.value === value) {
+      this.head = this.head.next;
       this.size--;
       return;
     }
-    let prev = this.haed;
+    let prev = this.head;
     while (prev.next) {
       if (prev.next.value === value) {
         prev.next = prev.next.next;
@@ -115,7 +115,7 @@ class LinkedList {
   }
 
   indexOf(value) {
-    let node = this.haed;
+    let node = this.head;
     let i = 0;
     while (node) {
       if (node.value === value) {
@@ -135,10 +135,10 @@ class LinkedList {
     return this.size;
   }
   isEmpty() {
-    return this.haed === null;
+    return this.head === null;
   }
   clear() {
-    this.haed = null;
+    this.head = null;
     this.tail = null;
     this.size = 0;
   }
