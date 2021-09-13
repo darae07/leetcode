@@ -87,6 +87,7 @@ class HashTable {
         }else{
           old = node.next;
         }
+        break;
       }
       prev = node;
       node = node.next;
@@ -112,5 +113,5 @@ hashTable.put("sdsf", "c");
 hashTable.put("ssd", "d");
 console.log(hashTable.get("sdsf"));
 console.log(hashTable.get("ssdsf"));
-hashTable.delete("sdsf")
+hashTable.delete("sdf")
 console.log(hashTable);
