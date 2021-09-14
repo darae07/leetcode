@@ -3,7 +3,7 @@
 // delete
 
 class HashTable {
-  constructor(size = 5) {
+  constructor(size = 50) {
     this.bukets = new Array(size);
     this.size = size;
     this.count = 0;
