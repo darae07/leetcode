@@ -109,6 +109,21 @@ class Graph{
       this.vertexes[key] = this.vertexes[key].filter(v=> v !== value);
     }
   }
+  
+  hasVertex(value){
+    return this.vertexes.hasOwnProperty(value);
+  }
+
+  hasEdge(value1, value2){
+    if(!this.hasVertex(value1)){
+      return false
+    }
+    return this.vertexes[value1].indexOf(value2) > -1
+  }
+
+  showGraph(){
+    console.log(this.vertexes)
+  }
 }
 
 const graph = new AdjacencyMatrix(4, 5, [[0,1],[0,2],[0,3],[1,2],[2,3]])
