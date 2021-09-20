@@ -58,6 +58,68 @@ class Node{
   }
 }
 
+// 무방향그래프
+class Graph{
+  vertexes = {}
+
+  addVertext(value){
+    const v = this.vertexes[value];
+    if(v){
+      console.log('vertext is already exist')
+      return
+    }
+    this.vertexes[value] = [];
+  }
+
+  addVertextes(vertexes){
+    if(!Array.isArray(vertex)){
+      throw new Error('put vertexes as type of array')
+    }
+    vertexes.forEach(v=>{
+      this.addVertext(v)
+    })
+  }
+
+  addEdge(value1, value2){
+    let v1 = this.vertexes[value1];
+    let v2 = this.vertexes[value2];
+    if(v1, v2){
+      v1.push(value2)
+      v2.push(value1)
+    }
+  }
+
+  addEdges(edges){
+    if(!Array.isArray(edges)){
+      throw new Error('put edges as type of array')
+    }
+    edges.forEach(edge=>{
+      this.addEdge(...edge)
+    })
+  }
+
+  removeEdge(v1, v2){
+    this.vertexes[v1] = this.vertexes[v1].filter(v=> v !== v2);
+    this.vertexes[v2] = this.vertexes[v2].filter(v=> v !== v1);
+  }
+
+  removeVertex(value){
+    delete this.vertexes[value]
+    for(const key in this.vertexes){
+      this.vertexes[key] = this.vertexes[key].filter(v=> v !== value);
+    }
+  }
+}
+
 const graph = new AdjacencyMatrix(4, 5, [[0,1],[0,2],[0,3],[1,2],[2,3]])
 const graph2 = new AdjacencyList(4, 5, [[0,1],[0,2],[0,3],[1,2],[2,3]])
 console.log(graph2)
+const graph3 = new Graph();
+graph3.addVertext(1);
+graph3.addVertext(2);
+graph3.addVertext(3);
+graph3.addVertext(4);
+graph3.addEdges([[1,2],[3,4]]);
+// graph3.removeEdge(1,2)
+graph3.removeVertex(3)
+console.log(graph3)
