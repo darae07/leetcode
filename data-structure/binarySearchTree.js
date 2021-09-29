@@ -33,6 +33,27 @@ class BinarySearchTree {
       node.left = new Node(value);
     }
   }
+  search(value, node = this.root) {
+    if (!node) return;
+    if (value > node.value) {
+      return this.search(value, node.right);
+    }
+    if (value < node.value) {
+      return this.search(value, node.left);
+    }
+    return node;
+  }
+  traverse(){
+    const result = [];
+    this.traverseNode(result);
+    return result;
+  }
+  traverseNode(result, node = this.root){
+    if(!node) return;
+    this.traverseNode(result, node.left);
+    result.push(node.value)
+    this.traverseNode(result, node.right);
+  }
 }
 
 const tree = new BinarySearchTree();
@@ -41,4 +62,5 @@ tree.insert(8)
 tree.insert(3)
 tree.insert(1)
 tree.insert(5)
+console.log(tree.traverse())
 console.log(tree)
